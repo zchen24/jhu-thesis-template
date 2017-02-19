@@ -1,0 +1,12 @@
+
+% This macro creates an acronym where the first occurrence using \pgls is prefixed with "the"
+\newcommand{\newacronymthe}[3][]{\newacronym[prefixfirst={the~},#1]{#2}{#3}}
+
+\newacronym[longplural={degrees of freedom},shortplural={DOF}]{dof}{DOF}{degree of freedom}
+\newacronymthe{darpa}{DARPA}{Defense Advanced Research Projects Agency}
+\newacronym{hmm}{HMM}{Hidden Markov Model}
+\newacronymthe{jhu}{JHU}{Johns Hopkins University}
+\newacronym{cpu}{CPU}{Central Processing Unit}
+\newacronym{ekf}{EKF}{Extended Kalman Filter}
+\newacronym{eva}{EVA}{Extra-Vehicular Activities}
+\newacronym{ik}{IK}{inverse-kinematics}

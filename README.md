@@ -1,12 +1,7 @@
 JHU Thesis Readme
 =================
-Author: R. Jacob Vogelstein <br>
-Updated by Noah J. Cowan, March 1, 2010 <br>
-Updated by Brian D. Weitzner, April 29, 2014
 
-
-This archive is intended to simplify the process of creating a thesis
-in LaTeX that complies with the JHU formatting requirements.  
+This template is intended to simplify the process of creating a thesis in LaTeX that complies with the JHU thesis formatting requirements.  
 
 Quick Start
 -----------
@@ -42,7 +37,7 @@ What's Included?
 
 * `chapter1.tex` – Another sample chapter with some different formatting/header options.
 
-* `rjvheadshot.jpg` – A sample graphic with the right dimesions for the headshot used on the Vita page.
+* `headshot.jpg` – A sample graphic with the right dimesions for the headshot used on the Vita page.
 
 * `root.pdf` – A compiled version of the sample document.
 

@@ -40,7 +40,7 @@
 \belowdisplayshortskip  6\p@ plus3\p@ minus3\p@
 \let\@listi\@listI}   % Setting of \@listi added 9 Jun 87
  
-\newcommand{\small}{\fontsize\@ixpt{11}\selectfont%
+\renewcommand{\small}{\fontsize\@ixpt{11}\selectfont%
 \abovedisplayskip 8.5\p@ plus3\p@ minus4\p@
 \belowdisplayskip \abovedisplayskip
 \abovedisplayshortskip \z@ plus2\p@
@@ -49,7 +49,7 @@
 \topsep 4\p@ plus2\p@ minus2\p@\parsep 2\p@ plus\p@ minus\p@
 \itemsep \parsep}}
  
-\newcommand{\footnotesize}{\fontsize\@viiipt{9.5}\selectfont%
+\renewcommand{\footnotesize}{\fontsize\@viiipt{9.5}\selectfont%
 \abovedisplayskip 6\p@ plus2\p@ minus4\p@
 \belowdisplayskip \abovedisplayskip
 \abovedisplayshortskip \z@ plus\p@
@@ -58,13 +58,13 @@
 \topsep 3\p@ plus\p@ minus\p@\parsep 2\p@ plus\p@ minus\p@
 \itemsep \parsep}}
  
-\newcommand{\scriptsize}{\fontsize\@viipt{8pt}\selectfont}
-\newcommand{\tiny}{\fontsize\@vpt{6pt}\selectfont}
-\newcommand{\large}{\fontsize\@xiipt{14pt}\selectfont}
-\newcommand{\Large}{\fontsize\@xivpt{18pt}\selectfont}
-\newcommand{\LARGE}{\fontsize\@xviipt{22pt}\selectfont}
-\newcommand{\huge}{\fontsize\@xxpt{25pt}\selectfont}
-\newcommand{\Huge}{\fontsize\@xxvpt{30pt}\selectfont}
+\renewcommand{\scriptsize}{\fontsize\@viipt{8pt}\selectfont}
+\renewcommand{\tiny}{\fontsize\@vpt{6pt}\selectfont}
+\renewcommand{\large}{\fontsize\@xiipt{14pt}\selectfont}
+\renewcommand{\Large}{\fontsize\@xivpt{18pt}\selectfont}
+\renewcommand{\LARGE}{\fontsize\@xviipt{22pt}\selectfont}
+\renewcommand{\huge}{\fontsize\@xxpt{25pt}\selectfont}
+\renewcommand{\Huge}{\fontsize\@xxvpt{30pt}\selectfont}
  
 % The shortform font selection commands are not defined in LaTeX2e.  This
 % defines them so that they do non-orthogonal font selection, which is 
@@ -76,8 +76,8 @@
 \DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
 \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
 \DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
-\newcommand{\sl}{\slshape}
-\newcommand{\sc}{\scshape}
+\renewcommand{\sl}{\slshape}
+\renewcommand{\sc}{\scshape}
  
 \normalsize  % Choose the normalsize font.
 

@@ -6,13 +6,13 @@
 %%%     filename        = "thesis.cls",
 %%%     version         = "0.3.2",
 %%%     date            = "11 Nov 2005",
-%%%	portedby	= "Ian Goh",
-%%%	address		= "Homewood Academic Computing
-%%%			   Johns Hopkins University
-%%%			   Baltimore, MD 21218
-%%%			   USA",
-%%%	telephone	= "(410) 516-5408",
-%%%	email		= "ian.goh@jhu.edu",
+%%%     portedby        = "Ian Goh",
+%%%     address         = "Homewood Academic Computing
+%%%                        Johns Hopkins University
+%%%                        Baltimore, MD 21218
+%%%                        USA",
+%%%     telephone       = "(410) 516-5408",
+%%%     email           = "ian.goh@jhu.edu",
 %%%     codetable       = "ISO/ASCII",
 %%%     keywords        = "LaTeX, JHU,thesis",
 %%%     supported       = "until ?",
@@ -59,19 +59,15 @@
 %
 % Option values are now declared first thing.  Defaults are set to
 % 11 point, onesided, final (ie not draft) mode (BBF 10/31/94)
-\newcommand\@ptsize{}
 \newcommand\@draftmark{}
-\DeclareOption{10pt}{\renewcommand\@ptsize{0}}
-\DeclareOption{11pt}{\renewcommand\@ptsize{1}}
-\DeclareOption{12pt}{\renewcommand\@ptsize{2}}
-\DeclareOption{oneside}{\@twosidefalse \@mparswitchfalse}
-\DeclareOption{twoside}{\@twosidetrue  \@mparswitchtrue}
 \DeclareOption{draft}{\renewcommand\@draftmark{1}}
 \DeclareOption{final}{\renewcommand\@draftmark{0}}
-\ExecuteOptions{10pt,twoside,draft}
-% use the following for final thesis submission:
-%\ExecuteOptions{12pt,oneside,final}
 
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
+
+%\ExecuteOptions{10pt,twoside,draft}
+% use the following for final thesis submission:
+\ExecuteOptions{12pt,oneside,final}
 
 % CHOOSING THE TYPE SIZE:
 %
@@ -109,6 +105,8 @@
 % message. (BBF 10/31/94)
 
 \ProcessOptions
+
+\LoadClass{report}
 
 \input jhu1\@ptsize.clo\relax
 
@@ -253,52 +251,50 @@
 \def\fmsmallfont{\fontsize\@xiipt{14pt}\selectfont}
 
 \def\maketitle{
-{\dsp
-\begin{alwayssingle}
-    \let\footnotesize\small
-    \let\footnoterule\relax
-    \thispagestyle{empty}
-    \setcounter{page}{1}
-%
-% taken from earlier thesis.sty (JEB 19 Apr 90)
-% added by IG 01 Jan 97
-% new rules 1998, title should be written in all caps
-% and centered within the left and right margins, doublespaced
-% approx 2in from the top of the page.
+  {\dsp
+    \begin{alwayssingle}
+      \let\footnotesize\small
+      \let\footnoterule\relax
+      \thispagestyle{empty}
+      \setcounter{page}{1}
+      %
+      % taken from earlier thesis.sty (JEB 19 Apr 90)
+      % added by IG 01 Jan 97
+      % new rules 1998, title should be written in all caps
+      % and centered within the left and right margins, doublespaced
+      % approx 2in from the top of the page.
 
-%
-   \vbox to \textheight{
-      \null
-%     \vfil \vskip 0.5in 
-      \begin{center}
-         {\large\bf \@title \par}
-         \vskip 1em
-         {by \par}
-         \vskip 1em
-         \begin{tabular}[t]{c}
+      \vbox to \textheight{
+        \null
+        %     \vfil \vskip 0.5in 
+        \begin{center}
+          {\large\bf \@title \par}
+          \vskip 1em
+          {by \par}
+          \vskip 1em
+          \begin{tabular}[t]{c}
             {\large \@author}
-         \end{tabular}\par
-         \vskip 6em 
-  
-         {\@thesistype\ submitted to The Johns Hopkins University in
-          conformity with the requirements for the degree of \@degreetype.\par} 
-         \vskip 2em
-         {Baltimore, Maryland\par}
-         {\@degreemonth, \@degreeyear\par}
-         \vskip 8em
-         \@copyrightnotice
-      \end{center} \par 
-%      \vfil
-      \null
-    } % end of vbox enclosing title info
-   \end{alwayssingle}
-   \newpage
-   \normalsize  %% reset back to normalsize
-   \setcounter{footnote}{0}  \let\thanks\relax
-   \gdef\@thanks{}\gdef\@author{}\gdef\@title{}
-   \gdef\@degreetype{}\gdef\@thesistype{}\gdef\@copyrightnotice{}
-   \let\maketitle\relax
-}}
+          \end{tabular}\par
+          \vskip 6em 
+
+          {\@thesistype\ submitted to The Johns Hopkins University in
+            conformity with the requirements for the degree of \@degreetype.\par} 
+          \vskip 2em
+          {Baltimore, Maryland\par}
+          {\@degreemonth, \@degreeyear\par}
+          \vskip 8em
+          \@copyrightnotice
+        \end{center} \par 
+        %      \vfil
+        \null
+      } % end of vbox enclosing title info
+    \end{alwayssingle}
+    \newpage
+    \normalsize  %% reset back to normalsize
+    \setcounter{footnote}{0}  \let\thanks\relax
+    \gdef\@thanks{}\gdef\@author{}\gdef\@title{}
+    \gdef\@degreetype{}\gdef\@thesistype{}\gdef\@copyrightnotice{}
+    \let\maketitle\relax}}
 
 % APPROVALPAGE
 %
@@ -646,14 +642,6 @@ $\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{3.5in} Date }}\:$ \\
    \if@nobreak \everypar{}\else
      \addpenalty{\@secpenalty}\addvspace{\@tempskipa}\fi \@ifstar
      {\@ssect{#3}{#4}{#5}{#6}}{\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
-
-\newcounter {part}
-\newcounter {chapter}
-\newcounter {section}[chapter]
-\newcounter {subsection}[section]
-\newcounter {subsubsection}[subsection]
-\newcounter {paragraph}[subsubsection]
-\newcounter {subparagraph}[paragraph]
 
 % For any counter CTR, \theCTR is a macro that defines the printed
 % version of counter CTR.  It is defined in terms of the following
@@ -1043,90 +1031,6 @@ $\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{3.5in} Date }}\:$ \\
 \setcounter{dbltopnumber}{2}
 \def\dbltopfraction{.7}
 \def\dblfloatpagefraction{.5}
-
-% \@makecaption{NUMBER}{TEXT} : Macro to make a figure or table caption.
-%      NUMBER : Figure or table number--e.g., 'Figure 3.2'
-%      TEXT   : The caption text.
-%  Macro should be called inside a \parbox of right width, with
-%  \normalsize.
-% changed 25 Jun 86 to fix according to Howard Trickey:
-% instead of \unhbox\@tempboxa\par we do #1: #2\par
-
-% 15 Nov 93: further changes to support captions BEFORE the figure
-% or table.  Changes suggested by Donald Arseneau, installed by Ethan
-% Munson.  Detailed reasons are:
-%	The \unhbox allows \vadjust material (\vspace) to get out;
-%	the \vbox to\topskip{} is for captions at the top of top-floats;
-%	the \ifdim is for captions above the figure or table;
-%	the strut is for tables below the caption.
-
-\long\def\@makecaption#1#2{% Add space only if something is ...
-   \par\ifdim\prevdepth>-\p@ \vskip 10\p@\relax \fi % above the caption
-   \setbox\@tempboxa\hbox{\vbox to\topskip{}#1: #2\unskip\strut}% 
-   \ifdim \wd\@tempboxa >\hsize      % IF longer than one line:
-       {\ssp#1: #2\unskip\strut\par} %   THEN set as ordinary paragraph.
-     \else                           %   ELSE  center.
-       \hbox to\hsize{\hfil\unhbox\@tempboxa\hfil}%
-   \fi}
-
-% To define a float of type TYPE (e.g., TYPE = figure), the document
-% style must define the following.
-%
-%  \fps@TYPE   : The default placement specifier for floats of type
-%                TYPE.
-%
-% \ftype@TYPE : The type number for floats of type TYPE.  Each TYPE
-%                has associated a unique positive TYPE NUMBER, which
-%                is a power of two.  E.g., figures might have type
-%                number 1, tables type number 2, programs type number
-%                4, etc.
-%
-% \ext@TYPE : The file extension indicating the file on which the
-%                contents list for float type TYPE is stored.  For
-%                example, \ext@figure = 'lof'.
-%
-%  \fnum@TYPE  : A macro to generate the figure number for a caption.
-%                For example, \fnum@TYPE == Figure \thefigure.
-%
-%  The actual float-making environment commands--e.g., the commands
-%  \figure and \endfigure--are defined in terms of the macros \@float
-%  and \end@float, which are described below.
-%
-% \@float{TYPE}[PLACEMENT] : Macro to begin a float environment for a
-%     single-column float of type TYPE with PLACEMENT as the placement
-%     specifier.  The default value of PLACEMENT is defined by
-%     \fps@TYPE.  The environment is ended by \end@float.  E.g.,
-%     \figure == \@float{figure}, \endfigure == \end@float.
-
-
-% FIGURE
-
-\newcounter{figure}[chapter]
-\def\thefigure{\thechapter.\@arabic\c@figure}
-
-\def\fps@figure{tbp}
-\def\ftype@figure{1}
-\def\ext@figure{lof}
-\def\fnum@figure{\figurename~\thefigure}
-\def\figure{\@float{figure}}
-\let\endfigure\end@float
-\@namedef{figure*}{\@dblfloat{figure}}
-\@namedef{endfigure*}{\end@dblfloat}
-
-% TABLE
-%
-\newcounter{table}[chapter]
-\def\thetable{\thechapter.\@arabic\c@table}
-
-\def\fps@table{tbp}
-\def\ftype@table{2}
-\def\ext@table{lot}
-\def\fnum@table{\tablename~\thetable}
-\def\table{\@float{table}}
-\let\endtable\end@float
-\@namedef{table*}{\@dblfloat{table}}
-\@namedef{endtable*}{\end@dblfloat}
-
 
 %    ****************************************
 %    *            PAGE STYLES               *

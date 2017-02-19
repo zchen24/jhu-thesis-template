@@ -1,37 +1,97 @@
 % This template was originally by R. Jacob Vogelstein
 % Updated on March 1, 2010 by Noah J. Cowan
+% Updated in late 2016 by Jonathan Bohren ME'17
 
-\documentclass[12pt,oneside,final]{thesis}
-\usepackage[papersize={8.5in,11in}]{geometry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Font size:        10pt, 11pt, 12pt
+% Paper size:       letter
+% Margin ordering:  oneside, twoside
+% Draft mode:       draft (no figures), final
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt,letterpaper,oneside,final]{thesis}
+
+% use this to create PDF/A that supports PDF 1.6 %
+% PDF/A is required by JHU ETD system
+\usepackage[a-3b]{pdfx}
+
+% layout %
+\showboxdepth=5
+\showboxbreadth=5
+\usepackage{fancyhdr}
+
+% fonts %
 \usepackage[T1]{fontenc}
-\usepackage[superscript]{cite}
+\usepackage{lmodern} \normalfont
+\DeclareFontShape{T1}{lmr}{bx}{sc} { <-> ssub * cmr/bx/sc }{}
 \usepackage{amsmath,amsfonts}
-\usepackage{graphicx}
-\graphicspath{{./figs/}}
-\usepackage{array}
-% wrapfig is fragile: use sparingly
-\usepackage{wrapfig} 
-%\usepackage{times}  % Use this for ugly fonts
 
+% logistics %
+\usepackage{import}
+\usepackage{verbatim}
+
+% citations %
+\usepackage[numbers]{natbib}
+
+% references %
+\usepackage{hyperref}
+
+% graphics packages %
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{wrapfig} % wrapfig is fragile: use sparingly
+\usepackage{float}
+\usepackage{framed}
+\usepackage[font=singlespacing, labelfont=bf]{caption}
+\usepackage{subcaption}
+
+\graphicspath{{./figs/}}
+
+% typesetting
 \usepackage{upgreek}
 \usepackage{setspace}
+\usepackage{csquotes}
+\usepackage{mathtools}
+\usepackage{hyphenat}
 
+% tables %
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{longtable}
-%\usepackage[font=singlespacing, labelfont=bf]{caption}
-%\usepackage{CV}
+\usepackage{tabularx}
+\usepackage{tabulary}
 
+% algorithms %
+\usepackage[vlined]{algorithm2e}
+
+% lists %
 \usepackage{enumitem}
 \newlist{inlinelist}{enumerate*}{1}
 \setlist*[inlinelist,1]{%
   label=(\arabic*),
 }
 
-\usepackage{fancyhdr}    % Use nice looking headers along with the required footer page numbers   
-\usepackage{hyperref}
+% colors %
+\usepackage{xcolor}
 
-%Define the header/footer style
+% glossary % 
+\usepackage[acronym, toc]{glossaries-prefix}
+\renewcommand{\glossarypreamble}{\ssp{}}
+\makeglossaries
+
+% todos %
+\usepackage[backgroundcolor=white, bordercolor=red]{todonotes}
+\reversemarginpar
+\setlength{\marginparwidth}{2cm}
+\usepackage{silence}
+\WarningFilter*{latex}{Marginpar on page \thepage\space moved}
+\newcounter{todoListItems}
+\input{todo_macros.tex}
+%   usage: \todoin[time]{short}{long}
+%   usage: \todocite{}
+%   usage: \todoref{}
+
+% Define the header/footer style
 \pagestyle{fancy}
 \fancyhf{}
 \setlength{\headheight}{15pt}
@@ -43,55 +103,33 @@
 \fancyfoot[C]{\thepage} % except the center
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}}
+\def\newblock{\hskip .11em plus .33em minus .07em}
 
-%\tolerance=10000
-
-%\makeglossary % enable the glossary
+% indicies of terms
+\input{terms_acronyms}
+\input{terms_glossary}
 
 \begin{document}
 
-\title{JHU THESIS TEMPLATE}
-\author{R. Jacob Vogelstein}
-\degreemonth{May}
-\degreeyear{2007} 
-\dissertation
-\doctorphilosophy
-\copyrightnotice
-
-
-% add your chapters, best way is to have separate TeX files for each chapter
+% add separate files for each chapter
 \include{chapter0}
 \include{chapter1}
 
+\clearpage \markboth{Appendix}{Appendix}
 \include{appendix}
 
-%% REFERENCES
+% references
 
-% if you use BIBTEX
-\bibliographystyle{IEEEtran}
+\bibliographystyle{abbrv}
 \bibliography{thesis}
 
 \begin{vita}
 
 \begin{wrapfigure}{l}{0pt}
-\includegraphics[width=2in,height=2.5in,clip,keepaspectratio]{rjvheadshot}
+\includegraphics[width=2in,height=2.5in,clip,keepaspectratio]{headshot.jpg}
 \end{wrapfigure}
 
-R.\ Jacob Vogelstein received the Sc.\ B.\ degree in Bio-Electrical Engineering 
-from Brown University in 2000,  and enrolled in the Biomedical Engineering 
-Ph.D.\ program at Johns Hopkins University in 2001.  He was inducted into the 
-Tau Beta Pi and Sigma Xi honor societies in 1999, won the Brown University 
-Engineering Department's Outstanding Student Award in 2000, and received a 
-National Science Foundation Graduate Research Fellowship in 2002.  His research 
-focuses on neuromorphic and neuroprosthetic devices, and his papers have been 
-finalists in the student paper competitions at the 2004 IEEE International 
-Conference of the Engineering in Medicine and Biology Society and the 2004 IEEE 
-International Conference on Electronics, Circuits and Systems.
-
-Starting in June 2007, Jacob will work on the ``Revolutionizing Prosthetics 2009'' 
-project at the Johns Hopkins University Applied Physics Laboratory in Laurel,
-MD, where he will help to create the next-generation of upper-arm
-neuroprostheses.  
+David R. Jones studied art, music and design, including layout and typesetting. After Terry Burns, his half-brother, introduced him to modern jazz, his enthusiasm for players like Charles Mingus and John Coltrane led his mother to give him a plastic alto saxophone in 1961; he was soon receiving lessons from a local musician.
 
 \end{vita}
 \end{document}
